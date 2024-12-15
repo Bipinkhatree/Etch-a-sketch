@@ -10,9 +10,6 @@
     gap: 5px;
     height: 100%;
     width: 100%;
-    padding: 10px;
-
-
 }
 
 .child {
@@ -22,6 +19,10 @@
     height: 200px;
     border: 1px solid black;
     transition: background-color 0.3s ease;
+}
+
+child:hover {
+    background-color: #FF6347;
 }
 
 #btn-grid {
