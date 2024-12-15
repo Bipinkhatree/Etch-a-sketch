@@ -14,12 +14,40 @@ for (let i = 0; i < 256; i++) {
 };
 let gridChangeBtn = document.querySelector("#btn-grid");
 
+
+
+
+
 function applyEventListeners() {
     let childs = document.querySelectorAll(".child");
 
     childs.forEach(child => {
+        let = child.dataset.interactionCount = 0;
         child.addEventListener("mouseenter", () => {
-            child.style.backgroundColor = "#FF6347";
+
+
+            // Calculate the opacity reduction (darken by 10% per interaction)
+
+            child.dataset.interactionCount = parseInt(child.dataset.interactionCount) + 1;
+
+            let interactionCount = parseInt(child.dataset.interactionCount);
+            let opacity = 1 - (interactionCount * 0.1); // Decrease opacity by 10% each time
+
+
+
+            // Limit opacity to 0 (fully transparent)
+            opacity = Math.max(opacity, 0);
+
+
+            function generateRandomColor() {
+                let r = Math.floor(Math.random() * 256); // Random red value
+                let g = Math.floor(Math.random() * 256); // Random green value
+                let b = Math.floor(Math.random() * 256); // Random blue value
+                return `rgb(${r}, ${g}, ${b})`; // Return the RGB color as a string
+            }
+            child.style.backgroundColor = generateRandomColor();
+            child.style.opacity = opacity;
+
         });
 
         child.addEventListener("mouseleave", () => {
